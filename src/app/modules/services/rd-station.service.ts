@@ -13,11 +13,11 @@ export class RdStationService {
   constructor(private readonly httpClient: HttpClient) { }
 
   getDeals(): Observable<Deal[]> {
-    return this.httpClient.get<Deal[]>(`/api/v1/deals?token=${this.rdStationToken}`);
+    return this.httpClient.get<Deal[]>(`https://crm.rdstation.com/api/v1/deals?token=${this.rdStationToken}`);
   }
 
   getStages(): Observable<any> {
-    return this.httpClient.get<Stage[]>(`/api/v1/deal_stages?token=${this.rdStationToken}`).pipe(
+    return this.httpClient.get<Stage[]>(`https://crm.rdstation.com/api/v1/deal_stages?token=${this.rdStationToken}`).pipe(
       map((stages: any) => this.convertStages(stages.deal_stages))
     );
   }
